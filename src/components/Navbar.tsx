@@ -7,7 +7,17 @@ import { SeriesMark } from './Poster';
 import { ProfileAvatar } from './ProfileSelector';
 import { EASE } from './fx';
 
-export default function Navbar({ order, profileId, onSwitch }: { order: SectionId[]; profileId: ProfileId; onSwitch: (id: ProfileId) => void }) {
+export default function Navbar({
+  order,
+  profileId,
+  onSwitch,
+  onContact,
+}: {
+  order: SectionId[];
+  profileId: ProfileId;
+  onSwitch: (id: ProfileId) => void;
+  onContact?: () => void;
+}) {
   const { muted, toggleMute, playClick } = useSoundFX();
   const { scrollY } = useScroll();
   const [solid, setSolid] = useState(false);
@@ -82,7 +92,11 @@ export default function Navbar({ order, profileId, onSwitch }: { order: SectionI
         <div className="flex items-center gap-3">
           <button
             type="button"
-            onClick={() => go('contact')}
+            onClick={() => {
+              playClick();
+              if (onContact) onContact();
+              else go('contact');
+            }}
             className="hidden rounded-full border border-white/15 px-4 py-1.5 text-xs font-semibold tracking-[0.14em] text-bone transition hover:border-crimson-2 hover:text-crimson-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson sm:block"
           >
             LET&apos;S BUILD
@@ -190,7 +204,15 @@ export default function Navbar({ order, profileId, onSwitch }: { order: SectionI
               <motion.button
                 key={l.id}
                 type="button"
-                onClick={() => go(l.id)}
+                onClick={() => {
+                  if (l.id === 'contact' && onContact) {
+                    playClick();
+                    setMobileNav(false);
+                    onContact();
+                  } else {
+                    go(l.id);
+                  }
+                }}
                 initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.05 * i }}
