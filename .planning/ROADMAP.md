@@ -38,10 +38,10 @@ graph TD
 
 **Goal:** Provide visitor engagement tools: a functional contact modal, 3D card physics, animated metric counters, and rich project showcase links.
 
-- [ ] **Task 2.1 (Tracer Slice):** Implement a fully validated `ContactModal` with reactive field validation (name, email, subject, message), loading spinner, and flexible email handler (Formspree/EmailJS ready).
-- [ ] **Task 2.2:** Add 3D perspective tilt physics (`TiltCard`) with subtle specular highlight glares for project posters and featured cards.
-- [ ] **Task 2.3:** Implement smooth viewport-triggered animated metric counters (`AnimatedCounter`) for project stats and achievements.
-- [ ] **Task 2.4:** Upgrade `ProjectModal` to support tabbed deep dives: Architecture Overview, Key Challenges & Metrics, and live Demo/Code buttons.
+- [x] **Task 2.1 (Tracer Slice):** Implement a fully validated `ContactModal` with reactive field validation (name, email, subject, message), loading spinner, and flexible email handler (Formspree/EmailJS ready).
+- [x] **Task 2.2:** Add 3D perspective tilt physics (`TiltCard`) with subtle specular highlight glares for project posters and featured cards.
+- [x] **Task 2.3:** Implement smooth viewport-triggered animated metric counters (`AnimatedCounter`) for project stats and achievements.
+- [x] **Task 2.4:** Upgrade `ProjectModal` to support tabbed deep dives: Architecture Overview, Key Challenges & Metrics, and live Demo/Code buttons.
 
 **Verification Criteria:**
 - Contact form validates email format and required fields, handles submission states gracefully, and traps focus properly.
