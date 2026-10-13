@@ -2,6 +2,7 @@ import { lazy, Suspense, useCallback, useEffect, useState, type ReactNode } from
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import { viewerProfiles, type ProfileId, type Project, type SectionId } from './data/portfolio';
 import { SmoothScrollProvider, useSmoothScroll } from './hooks/smoothScroll';
+import { SoundFXProvider } from './hooks/useSoundFX';
 import CustomCursor from './components/CustomCursor';
 import OpeningSequence from './components/OpeningSequence';
 import ProfileSelector from './components/ProfileSelector';
@@ -40,7 +41,9 @@ function readStoredProfile(): ProfileId | null {
 export default function App() {
   return (
     <SmoothScrollProvider>
-      <Series />
+      <SoundFXProvider>
+        <Series />
+      </SoundFXProvider>
     </SmoothScrollProvider>
   );
 }

@@ -12,7 +12,7 @@ export default function EpisodeCard({ episode, index }: { episode: Episode; inde
       animate={{ opacity: 1, y: 0, rotateY: 0 }}
       transition={{ duration: 0.7, delay: index * 0.1, ease: EASE }}
     >
-      <Tilt max={7} className="group h-full rounded-xl">
+      <Tilt max={7} ambientColor={episode.palette.accent ? `${episode.palette.accent}66` : 'rgba(229,19,43,0.35)'} className="group h-full rounded-xl">
         <div className="flex h-full flex-col overflow-hidden rounded-xl bg-ink-2 ring-1 ring-white/10 transition duration-500 group-hover:ring-crimson-2/60">
           <div className="relative aspect-video overflow-hidden">
             <div className="absolute inset-0 transition-transform duration-[1.2s] ease-[var(--ease-cine)] group-hover:scale-110">

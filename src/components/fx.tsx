@@ -30,14 +30,23 @@ export function Magnetic({ children, strength = 0.35, className = '' }: { childr
   );
 }
 
-/** Subtle 3D tilt that follows the pointer by a few degrees. Flat on touch devices. */
+/** Subtle 3D tilt that follows the pointer by a few degrees with ambient bloom. Flat on touch devices. */
 export function Tilt({
   children,
   max = 6,
   className = '',
   glare = true,
+  ambient = true,
+  ambientColor = 'rgba(229, 19, 43, 0.35)',
   ...rest
-}: { children: ReactNode; max?: number; className?: string; glare?: boolean } & Omit<HTMLMotionProps<'div'>, 'children'>) {
+}: {
+  children: ReactNode;
+  max?: number;
+  className?: string;
+  glare?: boolean;
+  ambient?: boolean;
+  ambientColor?: string;
+} & Omit<HTMLMotionProps<'div'>, 'children'>) {
   const fine = useFinePointer();
   const reduced = useReducedMotionPref();
   const active = fine && !reduced;
@@ -48,6 +57,7 @@ export function Tilt({
   const gx = useTransform(px, (v) => `${v * 100}%`);
   const gy = useTransform(py, (v) => `${v * 100}%`);
   const glareBg = useTransform([gx, gy], ([a, b]) => `radial-gradient(circle at ${a} ${b}, rgba(255,255,255,0.16), transparent 55%)`);
+  const ambientBg = useTransform([gx, gy], ([a, b]) => `radial-gradient(circle at ${a} ${b}, ${ambientColor}, transparent 65%)`);
 
   return (
     <motion.div
@@ -65,6 +75,13 @@ export function Tilt({
         py.set(0.5);
       }}
     >
+      {active && ambient && (
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute -inset-5 -z-10 rounded-[inherit] opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
+          style={{ background: ambientBg }}
+        />
+      )}
       {children}
       {active && glare && (
         <motion.div aria-hidden className="pointer-events-none absolute inset-0 z-20 rounded-[inherit] mix-blend-overlay" style={{ background: glareBg }} />

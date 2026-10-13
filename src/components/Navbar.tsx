@@ -2,11 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { sectionMeta, viewerProfiles, type ProfileId, type SectionId } from '../data/portfolio';
 import { useSmoothScroll } from '../hooks/smoothScroll';
+import { useSoundFX } from '../hooks/useSoundFX';
 import { SeriesMark } from './Poster';
 import { ProfileAvatar } from './ProfileSelector';
 import { EASE } from './fx';
 
 export default function Navbar({ order, profileId, onSwitch }: { order: SectionId[]; profileId: ProfileId; onSwitch: (id: ProfileId) => void }) {
+  const { muted, toggleMute, playClick } = useSoundFX();
   const { scrollY } = useScroll();
   const [solid, setSolid] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -47,6 +49,7 @@ export default function Navbar({ order, profileId, onSwitch }: { order: SectionI
   }, [menu]);
 
   const go = (id: string) => {
+    playClick();
     setMobileNav(false);
     scrollTo(`#${id}`, { offset: id === 'top' ? 0 : -64 });
   };
@@ -80,18 +83,46 @@ export default function Navbar({ order, profileId, onSwitch }: { order: SectionI
           <button
             type="button"
             onClick={() => go('contact')}
-            className="hidden rounded-full border border-white/15 px-4 py-1.5 text-xs font-semibold tracking-[0.14em] text-bone transition hover:border-crimson-2 hover:text-crimson-2 sm:block"
+            className="hidden rounded-full border border-white/15 px-4 py-1.5 text-xs font-semibold tracking-[0.14em] text-bone transition hover:border-crimson-2 hover:text-crimson-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson sm:block"
           >
             LET&apos;S BUILD
           </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              playClick();
+              toggleMute();
+            }}
+            aria-label={muted ? 'Unmute sound effects' : 'Mute sound effects'}
+            title={muted ? 'Unmute sound effects' : 'Mute sound effects'}
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-mist transition hover:border-white/30 hover:bg-white/[0.08] hover:text-bone focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson"
+          >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+              {muted ? (
+                <>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                </>
+              ) : (
+                <>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                </>
+              )}
+            </svg>
+          </button>
+
           <div className="relative" ref={menuRef}>
             <button
               type="button"
-              onClick={() => setMenu((m) => !m)}
+              onClick={() => {
+                playClick();
+                setMenu((m) => !m);
+              }}
               aria-haspopup="menu"
               aria-expanded={menu}
               aria-label={`Viewing as ${current.name}. Switch profile`}
-              className="flex items-center gap-2 rounded-md p-1"
+              className="flex items-center gap-2 rounded-md p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson"
             >
               <ProfileAvatar id={profileId} size="sm" />
               <motion.span animate={{ rotate: menu ? 180 : 0 }} className="text-[10px] text-mist">
@@ -115,6 +146,7 @@ export default function Navbar({ order, profileId, onSwitch }: { order: SectionI
                       role="menuitem"
                       type="button"
                       onClick={() => {
+                        playClick();
                         onSwitch(p.id);
                         setMenu(false);
                       }}

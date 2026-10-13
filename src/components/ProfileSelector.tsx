@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { profile, viewerProfiles, type ProfileId } from '../data/portfolio';
+import { useSoundFX } from '../hooks/useSoundFX';
 import { EASE } from './fx';
 
 export function ProfileAvatar({ id, size = 'lg' }: { id: ProfileId; size?: 'sm' | 'lg' }) {
@@ -25,13 +26,18 @@ export function ProfileAvatar({ id, size = 'lg' }: { id: ProfileId; size?: 'sm' 
 }
 
 export default function ProfileSelector({ onPick }: { onPick: (id: ProfileId) => void }) {
+  const { playClick } = useSoundFX();
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onPick('sushmita');
+      if (e.key === 'Escape') {
+        playClick();
+        onPick('sushmita');
+      }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [onPick]);
+  }, [onPick, playClick]);
 
   return (
     <motion.div
@@ -60,7 +66,15 @@ export default function ProfileSelector({ onPick }: { onPick: (id: ProfileId) =>
       >
         {viewerProfiles.map((p) => (
           <motion.li key={p.id} variants={{ hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } } }}>
-            <button type="button" onClick={() => onPick(p.id)} data-cursor="play" className="group flex flex-col items-center gap-3 text-center">
+            <button
+              type="button"
+              onClick={() => {
+                playClick();
+                onPick(p.id);
+              }}
+              data-cursor="play"
+              className="group flex flex-col items-center gap-3 text-center"
+            >
               <span className="relative rounded-xl ring-2 ring-transparent transition duration-300 group-hover:scale-105 group-hover:ring-bone group-focus-visible:ring-bone">
                 <ProfileAvatar id={p.id} />
                 {p.id === 'sushmita' && (

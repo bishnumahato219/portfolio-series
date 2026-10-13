@@ -12,7 +12,7 @@ export default function ProjectCard({ project, index, onOpen }: { project: Proje
       viewport={{ once: true, margin: '0px -10% 0px 0px' }}
       transition={{ duration: 0.9, delay: index * 0.08, ease: EASE }}
     >
-      <Tilt max={5} className="group rounded-2xl">
+      <Tilt max={5} ambientColor={project.palette.accent ? `${project.palette.accent}66` : 'rgba(229,19,43,0.35)'} className="group rounded-2xl">
         <div
           role="button"
           tabIndex={0}
