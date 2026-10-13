@@ -1,7 +1,7 @@
 import { createContext, useContext, useRef, useState, useCallback, type ReactNode } from 'react';
 import { useReducedMotionPref } from './useMedia';
 
-const STORAGE_KEY = 'sushmita-series-muted';
+const STORAGE_KEY = 'portfolio-series-muted';
 
 interface SoundFXContextType {
   muted: boolean;

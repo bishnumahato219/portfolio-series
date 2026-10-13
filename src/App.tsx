@@ -1,6 +1,6 @@
 import { lazy, Suspense, useCallback, useEffect, useState, type ReactNode } from 'react';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
-import { viewerProfiles, type ProfileId, type Project, type SectionId } from './data/portfolio';
+import { profile, viewerProfiles, type ProfileId, type Project, type SectionId } from './data/portfolio';
 import { SmoothScrollProvider, useSmoothScroll } from './hooks/smoothScroll';
 import { SoundFXProvider } from './hooks/useSoundFX';
 import CustomCursor from './components/CustomCursor';
@@ -28,7 +28,7 @@ const ContactModal = lazy(() => import('./components/ContactModal'));
 
 type Stage = 'opening' | 'profiles' | 'home';
 
-const STORAGE_KEY = 'sushmita-series-profile';
+const STORAGE_KEY = 'portfolio-series-profile';
 
 function readStoredProfile(): ProfileId | null {
   try {
@@ -61,6 +61,10 @@ function Series() {
   const { scrollTo, lock, unlock } = useSmoothScroll();
 
   const order = viewerProfiles.find((p) => p.id === profileId)!.order;
+
+  useEffect(() => {
+    document.title = `${profile.displayName} — ${profile.seriesTag}`;
+  }, []);
 
   useEffect(() => {
     if (stage === 'home') return;

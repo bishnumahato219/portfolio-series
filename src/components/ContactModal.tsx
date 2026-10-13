@@ -103,7 +103,7 @@ export default function ContactModal({ onClose }: { onClose: () => void }) {
   const openMailtoFallback = () => {
     playClick();
     const body = encodeURIComponent(
-      `Hi Sushmita,\n\nName: ${form.name}\nOrganization: ${form.organization || 'N/A'}\nIntent: ${form.intent}\n\n${form.message}`,
+      `Hi ${profile.firstName},\n\nName: ${form.name}\nOrganization: ${form.organization || 'N/A'}\nIntent: ${form.intent}\n\n${form.message}`,
     );
     const subject = encodeURIComponent(form.subject || `Inquiry from ${form.name}`);
     window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
@@ -175,7 +175,7 @@ export default function ContactModal({ onClose }: { onClose: () => void }) {
               <h3 className="font-display text-4xl tracking-wide text-bone sm:text-5xl">THE SERIES CONTINUES</h3>
               <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-mist">
                 Thank you for reaching out, <strong className="text-bone">{form.name}</strong>. Your message regarding{' '}
-                <span className="text-bone">&ldquo;{form.intent}&rdquo;</span> has been queued. Sushmita will get back to you at{' '}
+                <span className="text-bone">&ldquo;{form.intent}&rdquo;</span> has been queued. {profile.displayName} will get back to you at{' '}
                 <strong className="text-bone">{form.email}</strong> shortly.
               </p>
               <div className="mt-8 flex justify-center gap-4">
