@@ -54,7 +54,18 @@ export default function ProjectCard({ project, index, onOpen }: { project: Proje
             </div>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <span className="flex min-h-11 items-center gap-2 rounded-md bg-bone px-5 text-sm font-bold text-ink transition group-hover:bg-white">▶ View Project</span>
-              {project.github && (
+              {project.externalLink ? (
+                <a
+                  href={project.externalLink.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="link"
+                  onClick={(e) => e.stopPropagation()}
+                  className="flex min-h-11 items-center gap-2 rounded-md border border-pink-500/40 bg-pink-500/15 px-4 text-sm font-semibold text-pink-300 backdrop-blur transition hover:border-pink-400 hover:text-white"
+                >
+                  Watch Reels ↗
+                </a>
+              ) : project.github ? (
                 <a
                   href={project.github}
                   target="_blank"
@@ -65,7 +76,7 @@ export default function ProjectCard({ project, index, onOpen }: { project: Proje
                 >
                   GitHub ↗
                 </a>
-              )}
+              ) : null}
             </div>
           </div>
         </div>

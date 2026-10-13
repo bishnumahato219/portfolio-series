@@ -17,6 +17,7 @@ export default function FinalCTA({ onReplay, onContact }: { onReplay: () => void
 
   const ctas = [
     { label: "Let's Build", href: `mailto:${profile.email}?subject=${encodeURIComponent("Let's build something")}`, primary: true, cursor: 'play' },
+    { label: 'Instagram', href: profile.links.instagram, cursor: 'link' },
     { label: 'LinkedIn', href: profile.links.linkedin, cursor: 'link' },
     { label: 'GitHub', href: profile.links.github, cursor: 'link' },
     { label: 'Email', href: `mailto:${profile.email}`, cursor: 'link' },
@@ -92,6 +93,39 @@ export default function FinalCTA({ onReplay, onContact }: { onReplay: () => void
             </Magnetic>
           </motion.div>
         ))}
+      </motion.div>
+
+      {/* Instagram QR Card */}
+      <motion.div
+        className="relative mt-12 mx-auto w-full max-w-md rounded-2xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl shadow-2xl"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: EASE }}
+      >
+        <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+          <img
+            src={profile.links.instagramQr}
+            alt="Instagram @bishnufilms QR Code"
+            className="h-24 w-24 shrink-0 rounded-xl object-contain bg-white p-1.5 shadow-md"
+          />
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-pink-400">INSTAGRAM HANDLE</p>
+            <p className="font-display text-2xl tracking-wide text-bone">@bishnufilms</p>
+            <p className="mt-1 text-xs leading-relaxed text-mist">
+              Scan or tap to explore all cinematic films, color grading reels, and CapCut edits.
+            </p>
+            <a
+              href={profile.links.instagram}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => playClick()}
+              className="mt-2.5 inline-flex items-center gap-1.5 text-xs font-bold text-pink-400 transition hover:text-white"
+            >
+              Follow on Instagram ↗
+            </a>
+          </div>
+        </div>
       </motion.div>
 
       <div className="relative mt-16 flex flex-wrap justify-center gap-6 text-xs font-semibold tracking-[0.24em] text-smoke">

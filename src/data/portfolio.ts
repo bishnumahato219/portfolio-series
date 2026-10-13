@@ -5,6 +5,59 @@
 
 export type Palette = { from: string; via: string; to: string; accent: string };
 
+export type VideoReel = {
+  title: string;
+  category: string;
+  tool: 'DaVinci Resolve' | 'CapCut';
+  url: string;
+  description: string;
+};
+
+export const videoReels: VideoReel[] = [
+  {
+    title: 'Durga Maa Agman',
+    category: 'Festival & Culture Cinematic',
+    tool: 'DaVinci Resolve',
+    url: 'https://www.instagram.com/reel/DeY3FUypd62/?utm_source=ig_web_copy_link&obrf=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==',
+    description: 'Devotional festival cinematic crafted with rich color grading, rhythmic audio timing, and dynamic cuts.',
+  },
+  {
+    title: 'Color Grade',
+    category: 'Color Grading Showcase',
+    tool: 'DaVinci Resolve',
+    url: 'https://www.instagram.com/stories/highlights/18144405895575512/?__pwa=1',
+    description: 'Professional color grading showcase with node-based curves, skin-tone preservation, and film look emulation.',
+  },
+  {
+    title: 'Cinematic',
+    category: 'Cinematic Visuals',
+    tool: 'DaVinci Resolve',
+    url: 'https://www.instagram.com/reel/DWicsINgO4B/?utm_source=ig_web_copy_link&dlrf=NTc4MTIwNjQ2YQ==',
+    description: 'High-production-value visual piece with atmospheric lighting, camera motion, and sound design.',
+  },
+  {
+    title: 'College Cinematic',
+    category: 'Campus Event Cinematic',
+    tool: 'DaVinci Resolve',
+    url: 'https://www.instagram.com/reel/DR2yHpjE2Uz/?utm_source=ig_web_copy_link&cplk=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==',
+    description: 'Dynamic campus cinematic shot and edited for Haldia Institute of Technology / ISTE HIT Student Chapter.',
+  },
+  {
+    title: 'CapCut Edit I',
+    category: 'Velocity & Beat Reel',
+    tool: 'CapCut',
+    url: 'https://www.instagram.com/reel/C9v4OInS3th/?utm_source=ig_web_copy_link&psln=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==',
+    description: 'Fast-paced velocity edit with beat-synced optical transitions and trend-aligned pacing.',
+  },
+  {
+    title: 'CapCut Edit II',
+    category: 'Stylized Motion Reel',
+    tool: 'CapCut',
+    url: 'https://www.instagram.com/reel/C91wyRnS7D-/?utm_source=ig_web_copy_link&xtok=MzRlODBiNWFlZA==&srtk=MzRlODBiNWFlZA==',
+    description: 'Stylized motion reel with speed ramping, optical flow, and seamless audio synchronization.',
+  },
+];
+
 export const profile = {
   fullName: 'Bishnu Mahato',
   displayName: 'Bishnu Mahato',
@@ -15,13 +68,16 @@ export const profile = {
   role: 'Full-Stack Developer & Video Editor',
   tagline: ['Full-Stack Developer', 'Video Editor', 'DaVinci Resolve & Motion Graphics'],
   intro:
-    'Computer Science & Engineering student at Haldia Institute of Technology, full-stack MERN developer, and Media Head at ISTE HIT\'SC specializing in video editing and motion graphics with DaVinci Resolve.',
+    'Computer Science & Engineering student at Haldia Institute of Technology (B.Tech CGPA 7.95), full-stack MERN developer, and Media Head at ISTE HIT\'SC specializing in video editing and motion graphics with DaVinci Resolve.',
   location: 'Haldia, West Bengal, India',
   email: 'bishnumahato219@gmail.com',
   phone: '+91-9113484126',
   links: {
     linkedin: 'https://www.linkedin.com/in/bishnumahato',
     github: 'https://github.com/bishnumahato219',
+    instagram: 'https://www.instagram.com/bishnufilms/',
+    instagramHandle: '@bishnufilms',
+    instagramQr: '/assets/instagram-qr.png',
   },
   resumePdf: '/assets/Bishnu_Mahato_Resume.pdf',
   portrait: {
@@ -38,14 +94,14 @@ export const education = [
     place: 'Haldia, West Bengal',
     degree: 'Bachelor of Technology — Computer Science & Engineering (Lateral)',
     period: '2024 – 2027',
-    score: 'CGPA 7.95 / 10',
+    score: 'B.Tech CGPA: 7.95 / 10',
   },
   {
     school: 'Dr B C Roy Polytechnic',
     place: 'Durgapur, West Bengal',
     degree: 'Diploma — Mechanical Engineering (WBSCTE)',
     period: '2020 – 2023',
-    score: 'CGPA 9.10 / 10',
+    score: 'Diploma CGPA: 9.10 / 10',
   },
   {
     school: 'DAV Public School',
@@ -103,11 +159,45 @@ export type Project = {
   features: string[];
   metrics: Metric[];
   github?: string;
+  externalLink?: { label: string; url: string; platform: 'instagram' | 'live' | 'github' };
   palette: Palette;
   motif: 'shield' | 'flow' | 'tenants';
+  videos?: VideoReel[];
 };
 
 export const projects: Project[] = [
+  {
+    id: 'davinci-motion-production',
+    title: 'DaVinci Resolve Motion & Video Production',
+    year: '2024 – 2026',
+    genre: 'Video Editing • Motion Graphics • Cinematography',
+    logline: 'Cinematic festival films, node-based color grading, and viral social reels crafted in DaVinci Resolve and CapCut.',
+    stack: ['DaVinci Resolve', 'CapCut', 'Motion Graphics', 'Cinematography', 'Sound Design'],
+    build: [
+      'Engineered an end-to-end post-production pipeline in DaVinci Resolve and CapCut, delivering festival cinematics, campus promos, and commercial reels.',
+      'Developed node-based color grading workflows, custom kinetic titles, velocity transitions, and multi-track audio mixing for high audience retention.',
+    ],
+    features: [
+      'DaVinci Resolve node-based color grading',
+      'Kinetic motion graphics & typography',
+      'Festival & campus cinematic direction',
+      'High-retention social reels & sound design',
+    ],
+    metrics: [
+      { value: '6+', label: 'featured reels & films' },
+      { value: '4K', label: 'cinematic production' },
+      { value: 'Media Head', label: 'ISTE HIT Student Chapter' },
+    ],
+    // DO NOT CONNECT TO GITHUB — connected to Instagram platform
+    externalLink: {
+      label: 'Watch on Instagram (@bishnufilms)',
+      url: 'https://www.instagram.com/bishnufilms/',
+      platform: 'instagram',
+    },
+    palette: { from: '#2a0610', via: '#7a0f24', to: '#0b0710', accent: '#ff3d5a' },
+    motif: 'tenants',
+    videos: videoReels,
+  },
   {
     id: 'multi-agent-research-synthesizer',
     title: 'Multi-Agent Research Synthesizer',
@@ -160,32 +250,6 @@ export const projects: Project[] = [
     palette: { from: '#04121f', via: '#0f4c6e', to: '#05080d', accent: '#4cc9ff' },
     motif: 'shield',
   },
-  {
-    id: 'davinci-motion-production',
-    title: 'DaVinci Resolve Motion & Video Production',
-    year: '2024 – 2026',
-    genre: 'Video Editing • Motion Graphics • Visual Direction',
-    logline: 'High-production-value event cinematics, custom kinetic motion graphics, and guest interview series for ISTE HIT Student Chapter.',
-    stack: ['DaVinci Resolve', 'Motion Graphics', 'Cinematography', 'Sound Design'],
-    build: [
-      'Directed end-to-end post-production pipeline in DaVinci Resolve, handling multi-cam convention footage, kinetic typography, and color grading.',
-      'Produced engaging promotional reels, social media content, and guest interview series for the ISTE Annual Convention with retention-focused pacing.',
-    ],
-    features: [
-      'DaVinci Resolve timeline editing & color grading',
-      'Custom motion graphics & kinetic titles',
-      'Convention coverage & guest interview cinematography',
-      'Sound design & rhythm-matched cuts',
-    ],
-    metrics: [
-      { value: '2+ Yrs', label: 'video editing experience' },
-      { value: '4K', label: 'cinematic production' },
-      { value: 'Media Head', label: 'ISTE HIT Student Chapter' },
-    ],
-    github: 'https://github.com/bishnumahato219',
-    palette: { from: '#2a0610', via: '#7a0f24', to: '#0b0710', accent: '#ff3d5a' },
-    motif: 'tenants',
-  },
 ];
 
 export type Achievement = {
@@ -204,6 +268,13 @@ export const achievements: Achievement[] = [
     org: 'ISTE HIT Student Chapter',
     detail: 'Leading video editing, cinematography, and creative media production across major student chapter conventions and campaigns.',
     laurel: 'Leadership',
+  },
+  {
+    id: 'btech-cgpa',
+    title: 'B.Tech CGPA 7.95',
+    org: 'Haldia Institute Of Technology',
+    detail: 'Bachelor of Technology in Computer Science & Engineering (Lateral Entry) with consistent academic performance.',
+    laurel: 'CGPA 7.95',
   },
   {
     id: 'polytechnic-cgpa',
@@ -226,13 +297,6 @@ export const achievements: Achievement[] = [
     detail: 'Hands-on training in Linux OS commands, Capture The Flag (CTF), Burp Suite web vulnerability discovery, and binary analysis.',
     laurel: 'Cybersecurity',
   },
-  {
-    id: 'tata-motors',
-    title: 'Automotive Applications',
-    org: 'Ardent Computech & Tata Motors',
-    detail: 'Completed industrial training on advanced vehicle systems in collaboration with Bhandari Automobiles (Tata Motors).',
-    laurel: 'Tata Motors',
-  },
 ];
 
 export type Certification = { issuer: string; name: string; link: string };
@@ -242,7 +306,7 @@ export const certifications: Certification[] = [
   { issuer: 'Ardent & Tata Motors', name: 'Advanced Automobile Applications', link: 'https://github.com/bishnumahato219' },
   { issuer: 'Haldia Institute of Tech', name: 'EXPLOITX — Linux OS & Ethical Hacking', link: 'https://github.com/bishnumahato219' },
   { issuer: 'WBSCTE', name: 'Diploma in Mechanical Engineering (CGPA 9.10)', link: 'https://github.com/bishnumahato219' },
-  { issuer: 'ISTE HIT Student Chapter', name: 'Media Head — Video Editing & Motion Graphics', link: 'https://github.com/bishnumahato219' },
+  { issuer: 'ISTE HIT Student Chapter', name: 'Media Head — Video Editing & Motion Graphics', link: 'https://www.instagram.com/bishnufilms/' },
 ];
 
 export type Skill = { name: string; mono: string; note?: string };
@@ -255,6 +319,7 @@ export const skillCategories: SkillCategory[] = [
     subtitle: 'DaVinci Resolve & Motion Graphics',
     skills: [
       { name: 'DaVinci Resolve', mono: 'Dr', note: 'Primary Tool' },
+      { name: 'CapCut', mono: 'Cc', note: 'Mobile & Fast Cuts' },
       { name: 'Motion Graphics', mono: 'Mg' },
       { name: 'Cinematography', mono: 'Cm' },
       { name: 'Color Grading', mono: 'Cg' },
@@ -329,8 +394,9 @@ export const skillCategories: SkillCategory[] = [
 ];
 
 export const skillEvidence: Record<string, string[]> = {
-  'DaVinci Resolve': ['Media Head at ISTE HIT Student Chapter', 'Annual Convention multi-cam edits'],
-  'Motion Graphics': ['Kinetic titles & social media reels', 'ISTE event promos'],
+  'DaVinci Resolve': ['Durga Maa Agman, College Cinematic & Color Grade reels', 'Media Head at ISTE HIT Student Chapter'],
+  CapCut: ['Fast-paced social media velocity reels and trend edits'],
+  'Motion Graphics': ['Kinetic typography & social reels for @bishnufilms', 'ISTE Annual Convention promos'],
   'React.js': ['Multi-Agent Research Synthesizer', 'Car Inventory Management System'],
   'Node.js': ['Car Inventory Management System', 'Multi-Agent Research Synthesizer'],
   'Express.js': ['Car Inventory Management System', 'Multi-Agent Research Synthesizer'],
@@ -340,7 +406,7 @@ export const skillEvidence: Record<string, string[]> = {
   Java: ['Core Java, OOPs, Data Structures & Algorithms'],
   Linux: ['EXPLOITX Workshop at Haldia Institute of Technology'],
   Cinematography: ['ISTE Annual Convention guest interviews and event footage'],
-  'Data Structures & Algorithms': ['Computer Science coursework at HIT'],
+  'Data Structures & Algorithms': ['Computer Science coursework at HIT (B.Tech CGPA 7.95)'],
 };
 
 export type Episode = {
@@ -411,7 +477,7 @@ export const seasons: Season[] = [
     number: 3,
     title: 'Entering Computer Science',
     period: '2024 – 2027',
-    synopsis: 'B.Tech in Computer Science & Engineering at Haldia Institute Of Technology, mastering full-stack MERN.',
+    synopsis: 'B.Tech in Computer Science & Engineering at Haldia Institute Of Technology (CGPA 7.95), mastering full-stack MERN.',
     episodes: [
       {
         code: 'S03 E01',
@@ -447,9 +513,9 @@ export const seasons: Season[] = [
     episodes: [
       {
         code: 'S04 E01',
-        title: 'DaVinci Resolve Craft',
-        description: 'Specializing in DaVinci Resolve color grading, multi-camera editing, and dynamic motion design.',
-        tags: ['DaVinci Resolve', 'Motion Graphics', 'Color Grading'],
+        title: 'DaVinci Resolve & CapCut Craft',
+        description: 'Specializing in DaVinci Resolve color grading, multi-camera editing, and dynamic motion design for @bishnufilms.',
+        tags: ['DaVinci Resolve', 'CapCut', 'Color Grading'],
         runtime: '2+ Years',
         palette: crimson,
       },
@@ -492,15 +558,15 @@ export const seasons: Season[] = [
 export type TopPick = { label: string; title: string; detail: string; palette: Palette };
 
 export const topPicks: TopPick[] = [
+  { label: 'B.Tech CSE', title: 'CGPA 7.95', detail: 'Haldia Institute of Technology • Lateral Entry', palette: ocean },
   { label: 'Primary Creative Tool', title: 'DaVinci Resolve', detail: 'Video Editor & Motion Designer • ISTE Media Head', palette: crimson },
+  { label: 'Instagram Creator', title: '@bishnufilms', detail: 'Durga Maa Agman, College Cinematics & CapCut Edits', palette: violet },
   { label: 'The AI Original', title: 'Multi-Agent Synthesizer', detail: 'Neo4j graph reasoning & autonomous agent research', palette: violet },
   { label: 'Full-Stack Original', title: 'Car Inventory System', detail: 'Live on Vercel • 3-Tier RBAC & Real-time stock', palette: ocean },
   { label: 'Leadership', title: 'Media Head', detail: 'ISTE HIT Student Chapter • 2+ years of video production', palette: amber },
   { label: 'Academic High', title: '9.10 CGPA', detail: 'Dr B C Roy Polytechnic • Diploma in Mechanical Engg', palette: jade },
-  { label: 'Current Degree', title: 'B.Tech CSE', detail: 'Haldia Institute Of Technology • CGPA 7.95', palette: ocean },
   { label: 'Core Stack', title: 'MERN Stack', detail: 'MongoDB, Express.js, React.js, Node.js', palette: amber },
   { label: 'AI Credential', title: 'AI Native Certified', detail: 'InTime IT Services • AI for Engineers Program', palette: crimson },
-  { label: 'Dual Databases', title: 'Neo4j + MongoDB', detail: 'Knowledge graphs paired with scalable document stores', palette: violet },
   { label: 'Cybersecurity', title: 'EXPLOITX Workshop', detail: 'Linux, CTF, and vulnerability assessment at HIT', palette: jade },
 ];
 
@@ -509,19 +575,19 @@ export type IntroSlide = { kicker: string; title: string; lines: string[]; chips
 export const introSlides: IntroSlide[] = [
   {
     kicker: 'Education',
-    title: 'B.Tech CSE & 9.10 CGPA Diploma',
-    lines: ['Haldia Institute Of Technology (2024 – 2027)', 'Dr B C Roy Polytechnic, Durgapur (CGPA 9.10 / 10)'],
-    chips: ['B.Tech CSE', 'CGPA 9.10', 'Haldia'],
+    title: 'B.Tech CSE (CGPA 7.95)',
+    lines: ['Haldia Institute Of Technology (2024 – 2027) · B.Tech CSE (CGPA 7.95)', 'Dr B C Roy Polytechnic, Durgapur · Diploma (CGPA 9.10 / 10)'],
+    chips: ['B.Tech CGPA 7.95', 'Diploma 9.10', 'Haldia'],
   },
   {
     kicker: 'Video & Motion',
     title: 'DaVinci Resolve & Motion Design',
     lines: [
-      'Media Head at ISTE HIT Student Chapter',
+      'Media Head at ISTE HIT Student Chapter (@bishnufilms)',
       '2+ years directing video editing, color grading, and kinetic motion graphics',
-      'Annual Convention coverage & guest interview cinematography',
+      'Durga Maa Agman, College Cinematics, and viral CapCut edits',
     ],
-    chips: ['DaVinci Resolve', 'Motion Graphics', 'Color Grading'],
+    chips: ['DaVinci Resolve', 'CapCut', 'Motion Graphics', 'Color Grading'],
   },
   {
     kicker: 'Software Engineering',

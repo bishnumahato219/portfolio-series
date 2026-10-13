@@ -120,7 +120,22 @@ export default function ProjectModal({
                 <span className="text-bone/80">{project.stack.slice(0, 3).join(' • ')}</span>
               </div>
 
-              {project.github && (
+              {project.externalLink ? (
+                <div className="flex items-center gap-3">
+                  <Magnetic>
+                    <a
+                      href={project.externalLink.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={() => playClick()}
+                      data-cursor="link"
+                      className="flex min-h-10 items-center gap-2 rounded-lg bg-gradient-to-r from-[#e1306c] to-[#fd1d1d] px-5 text-sm font-bold text-white shadow-[0_0_20px_rgba(225,48,108,0.4)] transition hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-crimson"
+                    >
+                      <span>📷</span> {project.externalLink.label} ↗
+                    </a>
+                  </Magnetic>
+                </div>
+              ) : project.github ? (
                 <div className="flex items-center gap-3">
                   <Magnetic>
                     <a
@@ -135,7 +150,7 @@ export default function ProjectModal({
                     </a>
                   </Magnetic>
                 </div>
-              )}
+              ) : null}
             </motion.div>
 
             {/* Tab navigation */}
@@ -198,7 +213,7 @@ export default function ProjectModal({
                       </div>
 
                       <div>
-                        <h3 className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em] text-crimson-2">Primary Architecture</h3>
+                        <h3 className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em] text-crimson-2">Primary Toolkit</h3>
                         <div className="flex flex-wrap gap-2">
                           {project.stack.map((t) => (
                             <span key={t} className="glass rounded-lg px-3.5 py-1.5 text-xs font-semibold text-bone">
@@ -208,6 +223,67 @@ export default function ProjectModal({
                         </div>
                       </div>
                     </div>
+
+                    {project.videos && project.videos.length > 0 && (
+                      <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl">
+                        <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+                          <div>
+                            <p className="text-[10px] font-bold uppercase tracking-[0.26em] text-crimson-2">FEATURED EDITS & REELS</p>
+                            <h4 className="font-display text-3xl tracking-wide text-bone">Watch the Films on Instagram</h4>
+                          </div>
+                          <a
+                            href="https://www.instagram.com/bishnufilms/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center gap-2 rounded-full border border-pink-500/40 bg-pink-500/15 px-4 py-1.5 text-xs font-bold text-pink-300 transition hover:bg-pink-500/30 hover:text-white"
+                          >
+                            <span>📷</span> Follow @bishnufilms ↗
+                          </a>
+                        </div>
+
+                        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                          {project.videos.map((vid) => (
+                            <a
+                              key={vid.title}
+                              href={vid.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="group relative flex flex-col justify-between rounded-xl border border-white/10 bg-ink-2/90 p-4 transition duration-300 hover:border-pink-500/50 hover:bg-white/[0.07]"
+                            >
+                              <div>
+                                <div className="flex items-center justify-between gap-2">
+                                  <span className="rounded bg-crimson/25 px-2 py-0.5 text-[9px] font-bold text-crimson-2 uppercase tracking-wider">{vid.tool}</span>
+                                  <span className="text-[10px] font-medium text-mist">{vid.category}</span>
+                                </div>
+                                <h5 className="mt-3 font-display text-2xl tracking-wide text-bone transition group-hover:text-pink-400">{vid.title}</h5>
+                                <p className="mt-1.5 text-xs leading-relaxed text-mist line-clamp-2">{vid.description}</p>
+                              </div>
+                              <div className="mt-4 flex items-center gap-1.5 text-xs font-bold text-crimson-2 transition group-hover:text-pink-400">
+                                <span>▶</span> Watch on Instagram ↗
+                              </div>
+                            </a>
+                          ))}
+                        </div>
+
+                        {/* Instagram QR Code Banner */}
+                        <div className="mt-8 flex flex-col sm:flex-row items-center gap-6 rounded-xl border border-white/10 bg-black/60 p-5">
+                          <img src="/assets/instagram-qr.png" alt="Instagram @bishnufilms QR Code" className="h-28 w-28 shrink-0 rounded-lg object-contain bg-white p-1.5 shadow-lg" />
+                          <div className="text-center sm:text-left">
+                            <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-crimson-2">INSTAGRAM HANDLE</p>
+                            <h5 className="font-display text-3xl text-bone">@bishnufilms</h5>
+                            <p className="mt-1 text-xs text-mist">Scan this QR code with your camera or tap below to explore all video edits, color grading highlights, and cinematography reels.</p>
+                            <a
+                              href="https://www.instagram.com/bishnufilms/"
+                              target="_blank"
+                              rel="noreferrer"
+                              className="mt-3 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#e1306c] to-[#fd1d1d] px-4 py-2 text-xs font-bold text-white shadow-md transition hover:opacity-95"
+                            >
+                              <span>📷</span> Open Instagram Profile ↗
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </motion.div>
                 )}
 
