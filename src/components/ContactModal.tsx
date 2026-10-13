@@ -195,7 +195,7 @@ export default function ContactModal({ onClose }: { onClose: () => void }) {
             <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <div className="mb-6">
                 <div className="mb-2 flex items-center gap-2">
-                  <span className="font-display text-lg text-crimson-2">S</span>
+                  <img src="/favicon.svg" alt="" className="h-4.5 w-4.5 rounded object-contain shadow-sm" />
                   <span className="text-[10px] font-bold tracking-[0.32em] text-smoke">NEW EPISODE INQUIRY</span>
                 </div>
                 <h3 id="contact-modal-title" className="font-display text-4xl tracking-wide text-bone sm:text-5xl">

@@ -96,7 +96,8 @@ export default function ProjectModal({
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
               >
-                <span className="font-display text-xl tracking-normal text-crimson-2">S</span> ORIGINAL
+                <img src="/favicon.svg" alt="" className="h-5 w-5 rounded object-contain shadow-sm" />
+                <span>ORIGINAL</span>
               </motion.p>
               <motion.h2
                 id={`title-${project.id}-modal`}

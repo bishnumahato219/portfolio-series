@@ -97,12 +97,7 @@ export function ProjectArt({ project, className = '' }: { project: Project; clas
 export function SeriesMark({ className = '' }: { className?: string }) {
   return (
     <span className={`inline-flex items-center gap-1.5 ${className}`}>
-      <svg viewBox="0 0 24 32" className="h-[1.1em] w-auto" aria-hidden>
-        <path
-          d="M3 2h10.5c4.2 0 7 2.2 7 6.2 0 2.5-1.4 4.5-3.8 5.4 3.1.9 4.8 3.2 4.8 6.4 0 4.2-3.3 6.8-8.2 6.8H3V2zm5 4.5v5.2h4.6c2 0 3.2-1 3.2-2.6 0-1.6-1.2-2.6-3.2-2.6H8zm0 8.5v6.2h5.2c2.2 0 3.6-1.1 3.6-3.1 0-2-1.4-3.1-3.6-3.1H8z"
-          fill="#e5132b"
-        />
-      </svg>
+      <img src="/favicon.svg" alt="Series" className="h-[1.15em] w-[1.15em] rounded object-contain shadow-sm" />
       <span className="font-sans text-[0.62em] font-bold tracking-[0.36em] text-mist">SERIES</span>
     </span>
   );
