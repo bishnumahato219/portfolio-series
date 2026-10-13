@@ -1,0 +1,19 @@
+{
+  "project": "sushmita-the-series",
+  "version": "1.0.0",
+  "mode": "balanced",
+  "depth": "balanced",
+  "planning_directory": ".planning",
+  "project_dir": "Portfolio_series",
+  "workflow": {
+    "research": true,
+    "verification": true,
+    "commit_per_phase": true
+  },
+  "priorities": [
+    "visual_motion_polish",
+    "interactive_features",
+    "content_case_studies",
+    "performance_seo_a11y"
+  ]
+}
