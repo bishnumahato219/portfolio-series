@@ -21,10 +21,10 @@ graph TD
 
 **Goal:** Establish an immersive sensory layer with audio cues, ambient lighting bloom, tactile feedback, and responsive layout refinement.
 
-- [ ] **Task 1.1 (Tracer Slice):** Build a Web Audio API synthesizer hook (`useSoundFX`) with synthesized Netflix-style intro sting, subtle UI clicks, volume attenuation, and a persistent mute toggle in `Navbar`.
-- [ ] **Task 1.2:** Implement ambient card lighting and cursor-tracked radial glow effects (`ambientGlow`) with GPU-accelerated CSS properties.
-- [ ] **Task 1.3:** Refine mobile responsive behaviors: bottom-sheet drawer patterns for mobile modal viewports and touch rail velocity tuning.
-- [ ] **Task 1.4:** Enforce accessibility safeguards: complete bypass of audio and heavy canvas shaders when `prefers-reduced-motion` is active.
+- [x] **Task 1.1 (Tracer Slice):** Build a Web Audio API synthesizer hook (`useSoundFX`) with synthesized Netflix-style intro sting, subtle UI clicks, volume attenuation, and a persistent mute toggle in `Navbar`.
+- [x] **Task 1.2:** Implement ambient card lighting and cursor-tracked radial glow effects (`ambientGlow`) with GPU-accelerated CSS properties.
+- [x] **Task 1.3:** Refine mobile responsive behaviors: bottom-sheet drawer patterns for mobile modal viewports and touch rail velocity tuning.
+- [x] **Task 1.4:** Enforce accessibility safeguards: complete bypass of audio and heavy canvas shaders when `prefers-reduced-motion` is active.
 
 **Verification Criteria:**
 - Sound engine initializes only on user interaction (browser autoplay policy compliant).
